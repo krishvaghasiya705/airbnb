@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // <-------------------- images -------------------->
-
 import iconsimage1 from "../../assets/icon/1.png";
 import iconsimage2 from "../../assets/icon/2.jpg";
 import iconsimage3 from "../../assets/icon/3.jpg";
@@ -91,6 +90,8 @@ function SamplePrevArrow(props) {
 
 function Typeslider() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isFirstSlide, setIsFirstSlide] = useState(true);
+  const [isLastSlide, setIsLastSlide] = useState(false);
 
   const iconsData = [
     { id: 1, src: iconsimage1, label: "Icons" },
@@ -164,9 +165,14 @@ function Typeslider() {
     slidesToShow: 17,
     slidesToScroll: 1,
     initialSlide: 0,
+    variableWidth: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    beforeChange: (current, next) => setActiveIndex(next),
+    beforeChange: (current, next) => {
+      setActiveIndex(next);
+      setIsFirstSlide(next === 0);
+      setIsLastSlide(next >= iconsData.length - 1);
+    },
     responsive: [
       {
         breakpoint: 1024,
@@ -197,31 +203,41 @@ function Typeslider() {
 
   return (
     <div className="type-slider-main">
-      <div className="container-header">
-        <Slider {...settings}>
-          {iconsData.map((icon, index) => (
-            <div key={icon.id}>
-              <div className="type-icons-div-alignment">
-                <div
-                  className={`type-icons-div-main ${
-                    activeIndex === index ? "type-icons-div-main-active" : ""
-                  }`}
-                >
-                  <div className="type-icon-div">
-                    <div className="icons-image">
-                      <img src={icon.src} alt={icon.label} />
+      <div className="type-slider-rl">
+        <div className="container-header">
+          <Slider {...settings}>
+            {iconsData.map((icon, index) => (
+              <div key={icon.id}>
+                <div className="type-icons-div-alignment">
+                  <div
+                    className={`type-icons-div-main ${
+                      activeIndex === index ? "type-icons-div-main-active" : ""
+                    }`}
+                  >
+                    <div className="type-icon-div">
+                      <div className="icons-image">
+                        <img src={icon.src} alt={icon.label} />
+                      </div>
+                      <span>{icon.label}</span>
                     </div>
-                    <span>{icon.label}</span>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
+            ))}
+          </Slider>
+        </div>
 
-      <div className="slider-shadow-frst"></div>
-      <div className="slider-shadow-scnd"></div>
+        <div
+          className={`slider-shadow-frst ${
+            isFirstSlide ? "Slider-shadow-disabled" : ""
+          }`}
+        ></div>
+        <div
+          className={`slider-shadow-scnd ${
+            isLastSlide ? "Slider-shadow-disabled" : ""
+          }`}
+        ></div>
+      </div>
     </div>
   );
 }

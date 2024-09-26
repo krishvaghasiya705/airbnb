@@ -1,47 +1,23 @@
 .type-slider-main {
-    position: relative;
+    position: sticky;
+    top: 80px;
+    left: 0;
+    background-color: #fff;
+    z-index: 9;
 
-    .type-icons-div-alignment {
-        display: flex;
-        justify-content: center;
-        align-items: end;
+    .type-slider-rl {
+        position: relative;
 
-        .type-icons-div-main {
-            position: relative;
-            width: fit-content;
-            margin: 0 8px;
-
-            .type-icon-div {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                align-items: center;
-                justify-content: start;
-                margin: 12px 0;
-                padding: 4px 0;
-
-                .icons-image {
-
-                    img {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-
-                span {
-                    font-size: 12px;
-                    font-weight: 500;
-                    line-height: 1rem;
-                    width: max-content;
-                }
-
-
-            }
+        .type-icons-div-alignment {
+            display: flex;
+            justify-content: center;
+            align-items: end;
 
             .type-icons-div-main-active {
+                position: relative;
 
                 &:after {
-                    background-color: #000;
+                    background-color: #000 !important;
                     opacity: 1;
                     content: "";
                     position: absolute;
@@ -52,93 +28,130 @@
                 }
             }
 
-            &:hover {
+            .type-icons-div-main {
+                position: relative;
+                width: fit-content;
+                margin: 0 16px;
 
-                &::after {
-                    background-color: #000;
+                .type-icon-div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    align-items: center;
+                    justify-content: start;
+                    margin: 12px 0;
+                    padding: 4px 0;
+
+                    .icons-image {
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
+
+                    span {
+                        font-size: 12px;
+                        font-weight: 500;
+                        line-height: 1rem;
+                        width: max-content;
+                    }
+
+
+                }
+
+                &:hover {
+
+                    &::after {
+                        background-color: #DDDDDD;
+                    }
+                }
+
+                &:after {
+                    background-color: transparent;
+                    opacity: 1;
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                }
+            }
+        }
+
+
+        .slick-arrow {
+            background-color: #fff !important;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            border: 0.5px solid rgb(0 0 0/0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9;
+
+            svg {
+                width: 12px;
+                height: 12px;
+
+
+                path {
+                    fill: #000;
                 }
             }
 
-            &:after {
-                background-color: transparent;
-                opacity: 1;
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 2px;
-            }
-        }
-    }
-
-
-    .slick-arrow {
-        background-color: #fff !important;
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        border: 0.5px solid rgb(0 0 0/0.3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9;
-
-        svg {
-            width: 12px;
-            height: 12px;
-
-
-            path {
-                fill: #000;
+            &:hover {
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
             }
         }
 
-        &:hover {
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        .slick-disabled {
+            display: none;
         }
-    }
 
-    .slick-disabled {
-        display: none;
-    }
+        .slick-prev {
 
-    .slick-prev {
-
-        svg {
-            transform: rotate(180deg);
+            svg {
+                transform: rotate(180deg);
+            }
         }
-    }
 
-    .slick-next:before {
-        content: "";
-        width: 0;
-        height: 0;
-    }
+        .slick-next:before {
+            content: "";
+            width: 0;
+            height: 0;
+        }
 
-    .slick-prev:before {
-        content: "";
-        width: 0;
-        height: 0;
-    }
-
+        .slick-prev:before {
+            content: "";
+            width: 0;
+            height: 0;
+        }
 
 
-    .slider-shadow-frst {
-        background-image: linear-gradient(to left, rgb(255 255 255/0), white 40px);
-        left: 60px;
-    }
-    
-    .slider-shadow-scnd {
-        background-image: linear-gradient(to right, rgb(255 255 255/0), white 40px);
-        right: 60px;
-    }
 
-    .slider-shadow-frst,
-    .slider-shadow-scnd {
-        position: absolute;
-        top: 0;
-        width: 80px;
-        height: 100%;
+        .slider-shadow-frst {
+            background-image: linear-gradient(to left, rgb(255 255 255/0), white 40px);
+            left: 80px;
+        }
+
+        .slider-shadow-scnd {
+            background-image: linear-gradient(to right, rgb(255 255 255/0), white 40px);
+            right: 60px;
+        }
+
+        .slider-shadow-frst,
+        .slider-shadow-scnd {
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 100%;
+        }
+
+        .Slider-shadow-disabled {
+            display: none;
+        }
     }
 }

@@ -1,0 +1,85 @@
+.locate-cards-section-main {
+    margin: 16px 0 48px 0;
+
+    .locate-cards-section {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 24px;
+
+        .locate-card {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: start;
+            gap: 12px;
+            max-width: 270px;
+            max-height: 256px;
+
+            .locate-card-image-div {
+                position: relative;
+                width: 100%;
+                min-height: 256px;
+                border-radius: 12px;
+                overflow: hidden;
+
+                div {
+                    height: 100%;
+                    outline: none;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                img {
+                    border-radius: 12px;
+                    object-fit: cover;
+                }
+
+                .share-icon-main {
+                    position: absolute;
+                    top: 12px;
+                    right: 12px;
+                    border-radius: 50%;
+                    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+                    background: linear-gradient(0deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)), linear-gradient(0deg, rgba(255, 255, 255, 0.54) 0%, rgba(255, 255, 255, 0.48) 60%, rgba(255, 255, 255, 0.76) 100%);
+                    border: 1.5px solid transparent;
+                    -webkit-mask-composite: exclude;
+                    mask-composite: exclude;
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            .locate-card-data-div {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                h3 {
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 19px;
+                    color: #222222;
+                }
+
+                p {
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 19px;
+                    color: #6A6A6A;
+                }
+
+                span {
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 19px;
+                    color: #222222;
+                }
+            }
+        }
+    }
+}

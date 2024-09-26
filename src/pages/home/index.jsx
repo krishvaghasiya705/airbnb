@@ -1,11 +1,12 @@
 import React from "react";
 import Typeslider from "../../component/Typeslider";
+import Homecardsection from "../../component/Homecomponent/Homecardssection";
 
 const Home = () => {
   return (
     <>
       <Typeslider />
-      <h1>Home Page</h1>
+      <Homecardsection />
     </>
   );
 };
