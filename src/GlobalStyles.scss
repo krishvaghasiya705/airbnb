@@ -1,0 +1,12 @@
+.container-header {
+    max-width: 1742px;
+    margin: 0 auto;
+    padding: 0 80px;
+
+    @media (max-width:1024px) {
+        padding: 0 40px;
+    }
+    @media (max-width:576px) {
+        padding: 0 20px;
+    }
+}

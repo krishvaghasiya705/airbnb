@@ -1,0 +1,111 @@
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: rgb(0 0 0/8%) 0 1px 0;
+
+    .header-content-alignment-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+
+        .header-logo-main {
+            flex: 1 0 140px;
+
+            a {
+
+                svg {
+
+                    path {
+                        fill: #FF385C;
+                    }
+
+                    path:nth-child(2n + 2) {
+                        @media (max-width:1024px) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .header-center-links-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex: 0 1 auto;
+
+            a {
+                padding: 10px 16px;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.5rem;
+            }
+
+            a:nth-child(2n + 1) {
+                color: #222222;
+            }
+
+            a:nth-child(2n + 2) {
+                color: #6A6A6A;
+                border-radius: 22px;
+                font-weight: 500;
+
+                &:hover {
+                    background-color: #F7F7F7;
+                    color: #222222;
+                }
+            }
+        }
+
+        .header-last-content-main {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            flex: 1 0 140px;
+
+            a {
+                color: #222222;
+                border-radius: 22px;
+                font-weight: 500;
+                padding: 12px;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 1.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover {
+                    background-color: #F7F7F7;
+                }
+            }
+
+            a:nth-child(2n + 2) {
+                margin-right: 8px;
+            }
+
+            .header-profile-div-main {
+                padding: 8px 8px 8px 14px;
+                border: 1px solid #DDDDDD;
+                border-radius: 30px;
+                display: flex;
+                justify-content: space-between;
+                gap: 14px;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+                }
+
+                img {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+    }
+}
