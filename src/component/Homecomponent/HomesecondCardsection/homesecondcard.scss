@@ -1,10 +1,17 @@
-.locate-cards-section-main {
-    margin: 16px 0 48px 0;
+.locate-cards-section-main-sc {
+    margin: 52px 0 48px 0;
+
+    h1 {
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 36px;
+    }
 
     .locate-cards-section {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 24px;
+        margin: 24px 0 0 0;
 
         .locate-card {
             display: flex;
@@ -24,6 +31,7 @@
                 overflow: hidden;
 
                 div {
+                    max-height: 256px;
                     height: 100%;
                     outline: none;
 
@@ -33,7 +41,6 @@
                 }
 
                 img {
-                    max-height: 256px;
                     border-radius: 12px;
                     object-fit: cover;
                 }
@@ -66,6 +73,11 @@
                     font-weight: 600;
                     line-height: 19px;
                     color: #222222;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
                 p {

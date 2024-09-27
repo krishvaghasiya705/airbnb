@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "./typeslider.scss";
 
@@ -92,6 +92,7 @@ function Typeslider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const iconsData = [
     { id: 1, src: iconsimage1, label: "Icons" },
@@ -201,8 +202,19 @@ function Typeslider() {
     ],
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="type-slider-main">
+    <div className={`type-slider-main ${isScrolled ? "type-slider-main-scrolled" : ""}`}>
       <div className="type-slider-rl">
         <div className="container-header">
           <Slider {...settings}>

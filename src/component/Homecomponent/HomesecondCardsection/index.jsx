@@ -1,5 +1,5 @@
 import React from "react";
-import "./homecardsection.scss";
+import "./homesecondcard.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,8 +8,16 @@ import Shareicon from "../../../assets/svg/Shareicon";
 import Nextslideicon from "../../../assets/svg/Nextslideicon";
 
 // <-------------------------- images -------------------------->
-import Oneimage from "../../../assets/images/1.png";
-import twoimage from "../../../assets/images/2.png";
+import oneimage from "../../../assets/secondcardsectionimage/one/1.webp";
+import oneoneimage from "../../../assets/secondcardsectionimage/one/1.1.webp";
+import onetwoimage from "../../../assets/secondcardsectionimage/one/1.2.webp";
+import onethreeimage from "../../../assets/secondcardsectionimage/one/1.3.webp";
+
+import twoimage from "../../../assets/secondcardsectionimage/two/2.webp";
+import twooneimage from "../../../assets/secondcardsectionimage/two/2.1.webp";
+import twotwoimage from "../../../assets/secondcardsectionimage/two/2.2.webp";
+import twothreeimage from "../../../assets/secondcardsectionimage/two/2.3.webp";
+
 import threeimage from "../../../assets/images/3.webp";
 import threeoneimage from "../../../assets/images/3.1.webp";
 import threetwoimage from "../../../assets/images/3.2.webp";
@@ -30,16 +38,34 @@ import sixthreeimage from "../../../assets/images/6.3.webp";
 // Sample data
 const cardData = [
   {
-    title: "Stay in Prince’s Purple Rain house",
-    host: "Hosted by Wendy and Lisa",
-    date: "Coming September",
-    images: [Oneimage],
+    title: "Live like Bollywood star Janhvi Kapoor",
+    host: "Hosted by Janhvi Kapoor",
+    date: "Sold out",
+    images: [
+      oneimage,
+      oneoneimage,
+      onetwoimage,
+      onethreeimage,
+      oneimage,
+      oneoneimage,
+      onetwoimage,
+      onethreeimage,
+    ],
   },
   {
-    title: "Join a living room session with Doja",
-    host: "Hosted by Doja Cat",
-    date: "Coming October",
-    images: [twoimage],
+    title: "Open the Olympic Games at Musée d’Orsay",
+    host: "Hosted by Mathieu Lehanneur",
+    date: "Sold out",
+    images: [
+      twoimage,
+      twooneimage,
+      twotwoimage,
+      twothreeimage,
+      twoimage,
+      twooneimage,
+      twotwoimage,
+      twothreeimage,
+    ],
   },
   {
     title: "Sleepover at Polly Pocket’s Compact",
@@ -121,7 +147,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-function Homecardsection() {
+function Homesecondcardsection() {
   const settings = {
     dots: true,
     infinite: false,
@@ -133,8 +159,9 @@ function Homecardsection() {
   };
 
   return (
-    <div className="locate-cards-section-main">
+    <div className="locate-cards-section-main-sc">
       <div className="container-header">
+        <h1>Past experiences</h1>
         <div className="locate-cards-section">
           {cardData.map((card, index) => (
             <div className="locate-card" key={index}>
@@ -169,4 +196,4 @@ function Homecardsection() {
   );
 }
 
-export default Homecardsection;
+export default Homesecondcardsection;
