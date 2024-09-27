@@ -1,5 +1,5 @@
 footer {
-    padding: 48px 0;
+    padding: 48px 0 0 0;
     background-color: #F7F7F7;
 
     .footer-content {
@@ -52,18 +52,148 @@ footer {
         }
 
         .footer-all-anchors-data-main {
-            padding: 32px 0 0 0;
+            padding: 32px 0 48px 0;
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 24px;
 
             .footer-all-anchors-data-box {
 
+                p,
+                span {
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 18px;
+                }
+
                 p {
+                    color: #222;
+                }
+
+                span {
+                    font-weight: 500;
+                    color: #6A6A6A;
+                }
+            }
+
+            .footer-data-extend-div {
+                height: fit-content;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 3px;
+                cursor: pointer;
+
+                &:hover {
+                    span {
+                        text-decoration-line: underline;
+                    }
+                }
+
+                span {
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 18px;
                     color: #222;
+                }
+            }
+        }
+    }
+
+    .footer-second-div {
+        border-top: 1px solid #DDDDDD;
+
+        .footer-second-div-first-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+
+            .footer-second-div-first-content-box {
+                padding: 48px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                p,
+                a {
+                    color: #222222;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 18px;
+                }
+
+                a {
+                    font-weight: 500;
+
+                    &:hover {
+                        text-decoration-line: underline;
+                    }
+                }
+            }
+        }
+
+        .footer-second-div-second-content {
+            padding: 24px 0;
+            border-top: 1px solid #DDDDDD;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .footer-last-content {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 5px;
+
+                p,
+                a {
+                    color: #222222;
+                    font-size: 13px;
+                    font-weight: 500;
+                    line-height: 18px;
+                }
+
+                a {
+                    &:hover {
+                        text-decoration-line: underline;
+                    }
+                }
+            }
+
+            .footer-second-last-content {
+                display: flex;
+                justify-content: end;
+                align-items: center;
+
+                .earth-icon-link-div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+                    margin: 0 24px 0 0;
+
+                    a {
+                        color: #222222;
+                        font-size: 13px;
+                        font-weight: 600;
+                        line-height: 18px;
+
+                        &:hover {
+                            text-decoration-line: underline;
+                        }
+                    }
+                }
+
+                .earth-icon-link-div-sc {
+                    margin: 0 !important;
+                }
+
+                .footer-social-media-links-main {
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+                    margin: 0 0 0 24px;
+                    gap: 16px;
                 }
             }
         }

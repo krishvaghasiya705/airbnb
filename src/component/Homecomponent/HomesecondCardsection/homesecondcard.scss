@@ -26,12 +26,12 @@
             .locate-card-image-div {
                 position: relative;
                 width: 100%;
-                min-height: 256px;
+                height: 256px;
                 border-radius: 12px;
                 overflow: hidden;
 
                 div {
-                    max-height: 256px;
+                    // max-height: 256px;
                     height: 100%;
                     outline: none;
 

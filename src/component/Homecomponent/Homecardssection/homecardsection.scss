@@ -6,6 +6,26 @@
         grid-template-columns: repeat(6, 1fr);
         gap: 24px;
 
+        @media (max-width:1640px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media (max-width:1128px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width:950px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width:900px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width:576px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
         .locate-card {
             display: flex;
             flex-direction: column;
@@ -13,15 +33,15 @@
             justify-content: start;
             gap: 12px;
             height: 100%;
-            max-width: 270px;
+            min-width: 270px;
             cursor: pointer;
 
             .locate-card-image-div {
                 position: relative;
                 width: 100%;
-                min-height: 256px;
                 border-radius: 12px;
                 overflow: hidden;
+                height: 256px;
 
                 div {
                     height: 100%;
@@ -33,7 +53,7 @@
                 }
 
                 img {
-                    max-height: 256px;
+                    // max-height: 256px;
                     border-radius: 12px;
                     object-fit: cover;
                 }

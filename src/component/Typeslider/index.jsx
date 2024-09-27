@@ -180,23 +180,6 @@ function Typeslider() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],
@@ -214,7 +197,11 @@ function Typeslider() {
   }, []);
 
   return (
-    <div className={`type-slider-main ${isScrolled ? "type-slider-main-scrolled" : ""}`}>
+    <div
+      className={`type-slider-main ${
+        isScrolled ? "type-slider-main-scrolled" : ""
+      }`}
+    >
       <div className="type-slider-rl">
         <div className="container-header">
           <Slider {...settings}>

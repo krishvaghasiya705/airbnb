@@ -3,11 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Header from "./common/header";
 import Footer from "./common/footer";
+import Typeslider from "./component/Typeslider";
 
 const App = () => {
   return (
     <div>
       <Header />
+      <Typeslider />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
