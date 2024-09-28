@@ -8,10 +8,30 @@
     }
 
     .locate-cards-section {
+        margin: 24px 0 0 0;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 24px;
-        margin: 24px 0 0 0;
+
+        @media (max-width:1700px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media (max-width:1620px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width:1330px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width:950px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width:700px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
 
         .locate-card {
             display: flex;
@@ -20,7 +40,7 @@
             justify-content: start;
             gap: 12px;
             height: 100%;
-            max-width: 270px;
+            min-width: 270px;
             cursor: pointer;
 
             .locate-card-image-div {
