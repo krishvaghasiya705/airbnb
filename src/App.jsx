@@ -4,10 +4,12 @@ import Home from "./pages/home";
 import Header from "./common/header";
 import Footer from "./common/footer";
 import Typeslider from "./component/Typeslider";
+import Scrolltotop from "./component/Scrollredirection";
 
 const App = () => {
   return (
     <div>
+      <Scrolltotop />
       <Header />
       <Typeslider />
       <main>
