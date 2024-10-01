@@ -5,6 +5,7 @@ import Header from "./common/header";
 import Footer from "./common/footer";
 import Typeslider from "./component/Typeslider";
 import Scrolltotop from "./component/Scrollredirection";
+import Footerstickycontent from "./component/Footerstickycontent";
 
 const App = () => {
   // document.designMode="on"
@@ -19,6 +20,7 @@ const App = () => {
         </Routes>
       </main>
       <Footer />
+      <Footerstickycontent />
     </div>
   );
 };

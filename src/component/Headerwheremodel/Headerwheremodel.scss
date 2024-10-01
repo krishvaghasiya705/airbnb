@@ -4,15 +4,15 @@
     left: 0;
     z-index: 11;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #F7F7F7;
     backdrop-filter: blur(92px);
     display: none;
     opacity: 0;
     pointer-events: none;
     overflow-y: auto;
+    grid-template-rows: auto 1fr auto;
 
-    grid-template-rows: auto 1fr 70px;
     @media (max-width:576px) {
         display: grid;
     }
@@ -98,6 +98,8 @@
             box-shadow: 0 0 0 1px rgb(0 0 0/4%), 0 6px 20px rgb(0 0 0/20%);
             box-sizing: border-box;
             overflow-y: auto;
+            opacity: 0;
+            transform: translateY(30px);
 
             &.header-where-model-body-main-content-open {
                 animation: fadeInUp 0.1s ease forwards 0.3s;
