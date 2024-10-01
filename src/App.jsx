@@ -7,6 +7,7 @@ import Typeslider from "./component/Typeslider";
 import Scrolltotop from "./component/Scrollredirection";
 
 const App = () => {
+  // document.designMode="on"
   return (
     <div>
       <Scrolltotop />

@@ -2,9 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "./typeslider.scss";
 
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-
 // <-------------------- images -------------------->
 import iconsimage1 from "../../assets/icon/1.png";
 import iconsimage2 from "../../assets/icon/2.jpg";
@@ -93,8 +90,8 @@ function Typeslider() {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
-  const sliderRef = useRef(null); 
+
+  const sliderRef = useRef(null);
 
   const iconsData = [
     { id: 1, src: iconsimage1, label: "Icons" },
@@ -176,14 +173,15 @@ function Typeslider() {
       setIsFirstSlide(next === 0);
       setIsLastSlide(next >= iconsData.length - 1);
     },
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: {
-    //       slidesToScroll: 3,
-    //     },
-    //   },
-    // ],
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 3,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
@@ -218,7 +216,7 @@ function Typeslider() {
                     className={`type-icons-div-main ${
                       activeIndex === index ? "type-icons-div-main-active" : ""
                     }`}
-                    onClick={() => handleIconClick(index)} // Add onClick handler
+                    onClick={() => handleIconClick(index)}
                   >
                     <div className="type-icon-div">
                       <div className="icons-image">

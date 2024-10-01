@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./footer.scss";
 import Dropdownicon from "../../assets/svg/dropdownicon";
 import { NavLink } from "react-router-dom";
@@ -6,9 +6,31 @@ import EarthIcon from "../../assets/svg/EarthIcon";
 import Facebookicon from "../../assets/svg/Facebookicon";
 import Twittericon from "../../assets/svg/Twittericon";
 import Instagramicon from "../../assets/svg/Instagramicon";
+import Slider from "react-slick";
+
+import Nexticon from "../../assets/svg/Nexticon";
+
+function SampleNextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div className={className} onClick={onClick}>
+      <Nexticon />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div className={className} onClick={onClick}>
+      <Nexticon />
+    </div>
+  );
+}
 
 const Footer = () => {
   const [activeAnchor, setActiveAnchor] = useState("Popular");
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
   const anchors = [
     "Popular",
@@ -125,11 +147,77 @@ const Footer = () => {
       { city: "Farm Houses", description: "United States" },
       { city: "Farm Cottages", description: "United Kingdom" },
       { city: "Cabin Rentals", description: "Australia" },
-      { city: "Yurt Rentals", description: "United States" },
+      { city: "Luxury Cabins", description: "United Kingdom" },
+      { city: "Luxury Cabins", description: "United States" },
+      { city: "Holiday Chalets", description: "United Kingdom" },
+      { city: "Cottage Rentals", description: "United States" },
+      { city: "Hollyday Cottages", description: "United Kingdom" },
+      { city: "Mansion Rentals", description: "United States" },
+      { city: "Villa Rentals", description: "United Kingdom" },
+      { city: "Hollyday Bunglows", description: "United Kingdom" },
     ],
-    Categories: [{ city: "Sonoma", description: "Cottage rentals" }],
-    "Things to do": [],
+    Categories: [
+      { city: "Amazing pools", description: "" },
+      { city: "Arctic", description: "" },
+      { city: "Camping", description: "" },
+      { city: "Camper vans", description: "" },
+      { city: "Castles", description: "" },
+      { city: "Containers", description: "" },
+      { city: "Countryside", description: "" },
+      { city: "Design", description: "" },
+      { city: "Earth homes", description: "" },
+      { city: "Farms", description: "" },
+      { city: "National parks", description: "" },
+      { city: "Vineyards", description: "" },
+      { city: "OMG!", description: "" },
+      { city: "Tiny homes", description: "" },
+      { city: "Towers", description: "" },
+      { city: "Windmills", description: "" },
+      { city: "Luxe", description: "" },
+    ],
+    "Things to do": [
+      { city: "London", description: "England" },
+      { city: "Paris", description: "Île-de-France" },
+      { city: "New York", description: "New York" },
+      { city: "Barcelona", description: "Catalonia" },
+      { city: "istanbul", description: "istanbul" },
+      { city: "Bali", description: "Indonesia" },
+      { city: "Amsterdam", description: "North Holland" },
+      { city: "Miami", description: "Florida" },
+      { city: "Madrid", description: "Community of Madrid" },
+      { city: "Los Angeles", description: "California" },
+      { city: "Rome", description: "Lazio" },
+      { city: "Lisbon", description: "Lisbon" },
+      { city: "Tokyo", description: "Tokyo" },
+      { city: "Vienna", description: "Vienna" },
+      { city: "Athens", description: "Greese" },
+      { city: "Prague", description: "Czechia" },
+      { city: "Orlando", description: "Florida" },
+    ],
   };
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    variableWidth: true,
+    initialSlide: 0,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <footer>
@@ -137,17 +225,37 @@ const Footer = () => {
         <div className="footer-content">
           <h2>Inspiration for future getaways</h2>
           <div className="footer-all-anchor-changer-main">
-            {anchors.map((anchor) => (
-              <div
-                key={anchor}
-                className={`footer-anchor-one ${
-                  activeAnchor === anchor ? "footer-anchor-one-active" : ""
-                }`}
-                onClick={() => setActiveAnchor(anchor)}
-              >
-                <span>{anchor}</span>
-              </div>
-            ))}
+            {isMobile ? (
+              <Slider {...settings}>
+                {anchors.map((anchor) => (
+                  <div key={anchor}>
+                    <div
+                      className={`footer-anchor-one ${
+                        activeAnchor === anchor
+                          ? "footer-anchor-one-active"
+                          : ""
+                      }`}
+                      onClick={() => setActiveAnchor(anchor)}
+                    >
+                      <span>{anchor}</span>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
+            ) : (
+              anchors.map((anchor) => (
+                <div className="footer-anchor-web-show" key={anchor}>
+                  <div
+                    className={`footer-anchor-one ${
+                      activeAnchor === anchor ? "footer-anchor-one-active" : ""
+                    }`}
+                    onClick={() => setActiveAnchor(anchor)}
+                  >
+                    <span>{anchor}</span>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
           <div className="footer-all-anchors-data-main">
             {data[activeAnchor].length > 0 ? (
@@ -202,14 +310,16 @@ const Footer = () => {
           <div className="footer-second-div-second-content">
             <div className="footer-last-content">
               <p>© 2024 Airbnb, Inc.</p>
-              <span>·</span>
-              <NavLink to={"/"}>Privacy</NavLink>
-              <span>·</span>
-              <NavLink to={"/"}>Terms</NavLink>
-              <span>·</span>
-              <NavLink to={"/"}>Sitemap</NavLink>
-              <span>·</span>
-              <NavLink to={"/"}>Company details</NavLink>
+              <div className="footer-last-links">
+                <span>·</span>
+                <NavLink to={"/"}>Privacy</NavLink>
+                <span>·</span>
+                <NavLink to={"/"}>Terms</NavLink>
+                <span>·</span>
+                <NavLink to={"/"}>Sitemap</NavLink>
+                <span>·</span>
+                <NavLink to={"/"}>Company details</NavLink>
+              </div>
             </div>
             <div className="footer-second-last-content">
               <div className="earth-icon-link-div">

@@ -4,13 +4,19 @@
 
 .type-slider-main {
     position: sticky;
-    top: 80px;
+    top: 79px;
     left: 0;
     background-color: #fff;
     z-index: 10;
 
     .type-slider-rl {
         position: relative;
+
+        .container-header {
+            @media (max-width:576px) {
+                padding: 0;
+            }
+        }
 
         .type-icons-div-alignment {
             display: flex;
@@ -37,6 +43,7 @@
                 width: fit-content;
                 margin: 0 16px;
                 cursor: pointer;
+                min-width: 65px;
 
                 .type-icon-div {
                     display: flex;
@@ -97,6 +104,10 @@
             align-items: center;
             z-index: 9;
 
+            @media (max-width:576px) {
+                display: none;
+            }
+
             svg {
                 width: 12px;
                 height: 12px;
@@ -116,7 +127,12 @@
             display: none;
         }
 
+        .slick-next {
+            right: -1.4%;
+        }
+
         .slick-prev {
+            left: -1.4%;
 
             svg {
                 transform: rotate(180deg);
@@ -139,12 +155,12 @@
 
         .slider-shadow-frst {
             background-image: linear-gradient(to left, rgb(255 255 255/0), white 40px);
-            left: 80px;
+            left: 3%;
         }
 
         .slider-shadow-scnd {
             background-image: linear-gradient(to right, rgb(255 255 255/0), white 40px);
-            right: 60px;
+            right: 3%;
         }
 
         .slider-shadow-frst,
@@ -153,6 +169,11 @@
             top: 0;
             width: 80px;
             height: 100%;
+            display: block;
+
+            @media (max-width:576px) {
+                display: none;
+            }
         }
 
         .Slider-shadow-disabled {
