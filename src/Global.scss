@@ -46,3 +46,9 @@ img {
     height: 100%;
     display: block;
 }
+
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

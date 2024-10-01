@@ -13,19 +13,32 @@ const Header = () => {
 
   const openModal = () => {
     setIsModalOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = "auto";
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth >= 577 && isModalOpen) {
+      closeModal();
+    }
   };
 
   useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
       document.body.style.overflow = "auto";
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isModalOpen]);
 
   return (
     <>
