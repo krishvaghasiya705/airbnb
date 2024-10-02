@@ -3,7 +3,8 @@ import "./Headerwheremodel.scss";
 import { NavLink } from "react-router-dom";
 import Closeicon from "../../assets/svg/Closeicon";
 import Searchiconsc from "../../assets/svg/Searchiconsc";
-import Searchiconthrd from "../../assets/svg/searchiconthrd";
+import Searchiconthrd from "../../assets/svg/Searchiconsc";
+// import Searchiconthrd from "../../assets/svg/searchiconthrd";
 
 import Dropdownicon from "../../assets/svg/dropdownicon";
 import { Modeldata } from "./../modeliconsandata/index";
