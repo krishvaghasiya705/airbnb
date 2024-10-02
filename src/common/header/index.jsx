@@ -7,6 +7,7 @@ import Hemburger from "../../assets/svg/hemburger";
 import Profileicon from "../../assets/svg/profileicon.svg";
 import Searchicon from "../../assets/svg/Searchicon";
 import Headerwheremodel from "../../component/Headerwheremodel";
+import Typeslider from "../../component/Typeslider";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -83,6 +84,7 @@ const Header = () => {
         </div>
       </header>
       <Headerwheremodel isModalOpen={isModalOpen} closeModal={closeModal} />
+      <Typeslider />
     </>
   );
 };
