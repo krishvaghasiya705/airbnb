@@ -8,26 +8,42 @@ import Profileicon from "../../assets/svg/profileicon.svg";
 import Searchicon from "../../assets/svg/Searchicon";
 import Headerwheremodel from "../../component/Headerwheremodel";
 import Typeslider from "../../component/Typeslider";
+import Earthmodel from "../../component/Earthmodel";
 
 const Header = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [isEarthModalOpen, setIsEarthModalOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openSearchModal = () => {
+    setIsSearchModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeSearchModal = () => {
+    setIsSearchModalOpen(false);
+  };
+
+  const openEarthModal = () => {
+    if (window.innerWidth >= 576) {
+      setIsEarthModalOpen(true);
+      setIsActive(true);
+    }
+  };
+
+  const closeEarthModal = () => {
+    setIsEarthModalOpen(false);
+    setIsActive(false);
   };
 
   const handleResize = () => {
-    if (window.innerWidth >= 577 && isModalOpen) {
-      closeModal();
+    if (window.innerWidth >= 577 && (isSearchModalOpen || isEarthModalOpen)) {
+      closeSearchModal();
+      closeEarthModal();
     }
   };
 
   useEffect(() => {
-    if (isModalOpen) {
+    if (isSearchModalOpen || isEarthModalOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -39,7 +55,7 @@ const Header = () => {
       document.body.style.overflow = "auto";
       window.removeEventListener("resize", handleResize);
     };
-  }, [isModalOpen]);
+  }, [isSearchModalOpen, isEarthModalOpen]);
 
   return (
     <>
@@ -53,20 +69,25 @@ const Header = () => {
             </div>
             <div className="header-center-links-main">
               <NavLink to={"/"}>Stays</NavLink>
-              <NavLink to={"/"}>Experiences</NavLink>
+              <NavLink to={"/second"}>Experiences</NavLink>
             </div>
             <div className="header-last-content-main">
               <NavLink to={"/"}>Airbnb your home</NavLink>
-              <NavLink to={"/"}>
+              <NavLink
+                to={"#"}
+                onClick={isEarthModalOpen ? closeEarthModal : openEarthModal}
+                className={isActive ? "earth-icon-active" : ""}
+              >
                 <EarthIcon />
               </NavLink>
+
               <div className="header-profile-div-main">
                 <Hemburger />
                 <img src={Profileicon} alt="Profileicon" />
               </div>
             </div>
           </div>
-          <div className="header-mobile-search-div" onClick={openModal}>
+          <div className="header-mobile-search-div" onClick={openSearchModal}>
             <div className="searchicon-div">
               <Searchicon />
             </div>
@@ -83,7 +104,11 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Headerwheremodel isModalOpen={isModalOpen} closeModal={closeModal} />
+      <Headerwheremodel
+        isModalOpen={isSearchModalOpen}
+        closeModal={closeSearchModal}
+      />
+      <Earthmodel isModalOpen={isEarthModalOpen} closeModal={closeEarthModal} />
       <Typeslider />
     </>
   );

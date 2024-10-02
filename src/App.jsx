@@ -4,7 +4,6 @@ import Home from "./pages/home";
 import Header from "./common/header";
 import Footer from "./common/footer";
 import Scrolltotop from "./component/Scrollredirection";
-// import Footerstickycontent from "./component/Footerstickycontent";
 
 const App = () => {
   // document.designMode="on"
@@ -18,7 +17,6 @@ const App = () => {
         </Routes>
       </main>
       <Footer />
-     
     </div>
   );
 };
