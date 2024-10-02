@@ -6,7 +6,7 @@ import Searchiconsc from "../../assets/svg/Searchiconsc";
 import Searchiconthrd from "../../assets/svg/searchiconthrd";
 
 import Dropdownicon from "../../assets/svg/dropdownicon";
-import { Modeldata } from './../modeliconsandata/index';
+import { Modeldata } from "./../modeliconsandata/index";
 
 function Headerwheremodel({ closeModal, isModalOpen }) {
   return (
