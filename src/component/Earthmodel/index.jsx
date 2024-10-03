@@ -10,6 +10,7 @@ function Earthmodel({ closeModal, isModalOpen }) {
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
   const [isOn, setIsOn] = useState(true);
   const [activeLanguageIndex, setActiveLanguageIndex] = useState(0);
+  const [activeCurrencyIndex, setActiveCurrencyIndex] = useState(0);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -42,6 +43,10 @@ function Earthmodel({ closeModal, isModalOpen }) {
 
   const handleLanguageClick = (index) => {
     setActiveLanguageIndex(index);
+  };
+
+  const handleCurrencyClick = (index) => {
+    setActiveCurrencyIndex(index);
   };
 
   if (!isVisible && !isModalOpen) return null;
@@ -99,7 +104,12 @@ function Earthmodel({ closeModal, isModalOpen }) {
                   handleLanguageClick={handleLanguageClick}
                 />
               )}
-              {activeButtonIndex === 1 && <Currency />}
+              {activeButtonIndex === 1 && (
+                <Currency
+                  activeCurrencyIndex={activeCurrencyIndex}
+                  handleCurrencyClick={handleCurrencyClick}
+                />
+              )}
             </>
           </div>
         </div>

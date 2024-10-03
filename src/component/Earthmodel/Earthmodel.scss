@@ -283,51 +283,66 @@
                         margin: 0 0 24px 0;
                     }
 
-                    .choose-language-boxes-main {
-                        display: flex;
-                        flex-wrap: wrap;
-                        align-items: center;
-                        justify-content: space-around;
+                }
 
-                        .laguage-box-main {
-                            padding: 8px;
-                            cursor: pointer;
+                .choose-language-boxes-main {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-around;
 
-                            &.laguage-box-main-active {
+                    .laguage-box-main {
+                        padding: 8px;
+                        cursor: pointer;
 
-                                .laguage-box {
-                                    outline: 1px solid #222222 !important;
-                                }
-                            }
+                        &.laguage-box-main-active {
 
                             .laguage-box {
-                                background-color: #fff;
-                                border-radius: 8px;
-                                border: 1px solid transparent;
-                                padding: 9px 12px;
-                                outline: none;
-
-                                &:hover {
-                                    background-color: #f7f7f7;
-                                }
-
-                                p {
-                                    color: #222222;
-                                }
-
-                                span {
-                                    color: #6A6A6A;
-                                }
-
-                                p,
-                                span {
-                                    min-width: 154px;
-                                    font-size: 14px;
-                                    font-weight: 500;
-                                    line-height: 18px;
-                                }
+                                outline: 1px solid #222222 !important;
                             }
                         }
+
+                        .laguage-box {
+                            background-color: #fff;
+                            border-radius: 8px;
+                            border: 1px solid transparent;
+                            padding: 9px 12px;
+                            outline: none;
+
+                            &:hover {
+                                background-color: #f7f7f7;
+                            }
+
+                            p {
+                                color: #222222;
+                            }
+
+                            span {
+                                color: #6A6A6A;
+                            }
+
+                            p,
+                            span {
+                                min-width: 154px;
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+
+                .currency-section-main {
+                    margin: 24px 0 0 0;
+                    padding: 0 0 24px 0;
+
+                    h5 {
+                        font-size: 22px;
+                        font-weight: 600;
+                        line-height: 26px;
+                        color: #222222;
+                        letter-spacing: -0.8px;
+                        margin: 0 0 24px 0;
                     }
                 }
             }
