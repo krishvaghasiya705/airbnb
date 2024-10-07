@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./sharemodel.scss";
 
 import Crossicon from "../../assets/svg/Crossicon";
@@ -11,12 +11,47 @@ import Facebookicon2 from "../../assets/svg/Facebookicon2";
 import Twittericon2 from "../../assets/svg/Twittericon2";
 import Moreicon from "../../assets/svg/Moreicon";
 
-const Sharemodel = ({ title, image, onClose }) => {
+const Sharemodel = ({ title, image, onClose, link }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+
+    useEffect(() => {
+        if (title && image) {
+            setIsVisible(true);
+        }
+    }, [title, image]);
+
+    useEffect(() => {
+        if (isClosing) {
+            const timer = setTimeout(() => {
+                setIsVisible(false);
+                onClose();
+            }, 500); // Match this with your closing animation duration
+            return () => clearTimeout(timer);
+        }
+    }, [isClosing, onClose]);
+
+    const handleClose = () => {
+        setIsClosing(true);
+    };
+
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(link)
+            .then(() => {
+                alert("Link copied to clipboard!");
+            })
+            .catch((err) => {
+                console.error("Failed to copy the link: ", err);
+            });
+    };
+
+    if (!isVisible) return null; // Prevent rendering if not visible
+
     return (
         <>
-            <div className="share-model-main-background" onClick={onClose}></div>
-            <div className={`share-model-main open`}>
-                <div className="share-model-close" onClick={onClose}>
+            <div className={`share-model-main-background ${isVisible ? "open" : ""} ${isClosing ? "closing" : ""}`} onClick={handleClose}></div>
+            <div className={`share-model-main ${isClosing ? "closing" : "open"}`}>
+                <div className="share-model-close" onClick={handleClose}>
                     <Crossicon />
                 </div>
                 <div className="share-model-title">
@@ -29,7 +64,7 @@ const Sharemodel = ({ title, image, onClose }) => {
                     <p>{title}</p>
                 </div>
                 <div className="share-model-body">
-                    <div className="share-model-via-box">
+                    <div className="share-model-via-box" onClick={handleCopyLink}>
                         <Copyicon />
                         <p>Copy Link</p>
                     </div>
@@ -66,4 +101,5 @@ const Sharemodel = ({ title, image, onClose }) => {
         </>
     );
 };
+
 export default Sharemodel;

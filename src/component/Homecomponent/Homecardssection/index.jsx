@@ -48,9 +48,9 @@ function Homecardsection() {
 
   useEffect(() => {
     if (isShareModelOpen) {
-      document.body.style.overflow = "hidden"; // Prevent scrolling
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; // Re-enable scrolling
+      document.body.style.overflow = "auto";
     }
 
     return () => {
@@ -100,6 +100,7 @@ function Homecardsection() {
         <Sharemodel
           title={shareData.title}
           image={shareData.image}
+          link="https://air-bnb-in.netlify.app/"
           onClose={() => setIsShareModelOpen(false)}
         />
       )}

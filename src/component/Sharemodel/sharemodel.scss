@@ -7,14 +7,22 @@
     z-index: 11;
     background: rgba(34, 34, 34, 0.6);
     cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+
+    &.open {
+        opacity: 1;
+    }
+
+    &.closing {
+        opacity: 0;
+    }
 }
 
 .share-model-main {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translate(-50%, 100%);
     opacity: 0;
     z-index: 12;
     padding: 24px;
@@ -22,14 +30,30 @@
     background-color: #fff;
     min-width: 568px;
     box-sizing: border-box;
-
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transform-origin: center;
-
+    animation: transformanimate 0.3s ease-in-out reverse;
+    
     &.open {
-        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
+        transform: translate(-50%, -50%);
+        animation: transformanimate 0.3s ease-in-out;
     }
+    
+    @keyframes transformanimate {
+        0% {
+            transform: translate(-50%, 100%);
+        }
+        100% {
+            transform: translate(-50%, -50%);
+        }
+    }
+    
+    &.closing {
+        animation: transformanimate 0.3s ease-in-out reverse;
+        opacity: 0;
+        transform: translate(-50%, 100%);
+    }
+
 
     .share-model-close {
         display: flex;
