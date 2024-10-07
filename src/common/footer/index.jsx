@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./footer.scss";
 import Dropdownicon from "../../assets/svg/dropdownicon";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import EarthIcon from "../../assets/svg/EarthIcon";
 import Facebookicon from "../../assets/svg/Facebookicon";
 import Twittericon from "../../assets/svg/Twittericon";
@@ -31,6 +31,7 @@ function SamplePrevArrow(props) {
 const Footer = () => {
   const [activeAnchor, setActiveAnchor] = useState("Popular");
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const location = useLocation();
 
   const anchors = [
     "Popular",
@@ -221,68 +222,68 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="container-footer">
-        <div className="footer-content">
-          <h2>Inspiration for future getaways</h2>
-          <div className="footer-all-anchor-changer-main">
-            {isMobile ? (
-              <Slider {...settings}>
-                {anchors.map((anchor) => (
-                  <div key={anchor}>
-                    <div
-                      className={`footer-anchor-one ${
-                        activeAnchor === anchor
+      {location.pathname !== "/help" && (
+        <div div className="container-footer">
+          <div className="footer-content">
+            <h2>Inspiration for future getaways</h2>
+            <div className="footer-all-anchor-changer-main">
+              {isMobile ? (
+                <Slider {...settings}>
+                  {anchors.map((anchor) => (
+                    <div key={anchor}>
+                      <div
+                        className={`footer-anchor-one ${activeAnchor === anchor
                           ? "footer-anchor-one-active"
                           : ""
-                      }`}
+                          }`}
+                        onClick={() => setActiveAnchor(anchor)}
+                      >
+                        <span>{anchor}</span>
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              ) : (
+                anchors.map((anchor) => (
+                  <div className="footer-anchor-web-show" key={anchor}>
+                    <div
+                      className={`footer-anchor-one ${activeAnchor === anchor ? "footer-anchor-one-active" : ""
+                        }`}
                       onClick={() => setActiveAnchor(anchor)}
                     >
                       <span>{anchor}</span>
                     </div>
                   </div>
-                ))}
-              </Slider>
-            ) : (
-              anchors.map((anchor) => (
-                <div className="footer-anchor-web-show" key={anchor}>
-                  <div
-                    className={`footer-anchor-one ${
-                      activeAnchor === anchor ? "footer-anchor-one-active" : ""
-                    }`}
-                    onClick={() => setActiveAnchor(anchor)}
-                  >
-                    <span>{anchor}</span>
+                ))
+              )}
+            </div>
+            <div className="footer-all-anchors-data-main">
+              {data[activeAnchor].length > 0 ? (
+                data[activeAnchor].map(({ city, description }) => (
+                  <div className="footer-all-anchors-data-box" key={city}>
+                    <p>{city}</p>
+                    <span>{description}</span>
                   </div>
+                ))
+              ) : (
+                <p>No data available for this category.</p>
+              )}
+              {activeAnchor !== "Mountains" && activeAnchor !== "Categories" && (
+                <div className="footer-data-extend-div">
+                  <span>Show more</span>
+                  <Dropdownicon />
                 </div>
-              ))
-            )}
-          </div>
-          <div className="footer-all-anchors-data-main">
-            {data[activeAnchor].length > 0 ? (
-              data[activeAnchor].map(({ city, description }) => (
-                <div className="footer-all-anchors-data-box" key={city}>
-                  <p>{city}</p>
-                  <span>{description}</span>
-                </div>
-              ))
-            ) : (
-              <p>No data available for this category.</p>
-            )}
-            {activeAnchor !== "Mountains" && activeAnchor !== "Categories" && (
-              <div className="footer-data-extend-div">
-                <span>Show more</span>
-                <Dropdownicon />
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="footer-second-div">
         <div className="container-footer">
           <div className="footer-second-div-first-content">
             <div className="footer-second-div-first-content-box">
               <p>Support</p>
-              <NavLink to={"/"}>Help Centre</NavLink>
+              <NavLink to={"/help"}>Help Centre</NavLink>
               <NavLink to={"/"}>AirCover</NavLink>
               <NavLink to={"/"}>Anti-discrimination</NavLink>
               <NavLink to={"/"}>Disability support</NavLink>
@@ -338,7 +339,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 

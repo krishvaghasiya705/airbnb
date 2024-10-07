@@ -1,0 +1,91 @@
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #FFF;
+
+    .help-container-header {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .help-header-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+
+        .help-header-logo-main {
+            margin: 0 0 0 80px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 8px;
+
+            span {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 23px;
+                color: #222222;
+            }
+        }
+
+        .header-last-content-main {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            flex: 1 0 140px;
+
+            @media (max-width:1024px) {
+                flex: none;
+            }
+
+            a {
+                color: #222222;
+                border-radius: 22px;
+                font-weight: 500;
+                padding: 12px;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 1.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                letter-spacing: -1px;
+
+                &:hover {
+                    background-color: #F7F7F7;
+                }
+            }
+
+            a:nth-child(2n + 2) {
+                margin-right: 8px;
+            }
+
+            .earth-icon-active {
+                background-color: #F7F7F7;
+            }
+
+            .header-profile-div-main {
+                padding: 3px 5px;
+                border: 1px solid #DDDDDD;
+                border-radius: 30px;
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+                }
+
+                img {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+    }
+}

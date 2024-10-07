@@ -1,0 +1,70 @@
+.help-how-main {
+    margin: 24px 0 0 0;
+
+    .help-container {
+        max-width: 1176px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #222222;
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 56px;
+        letter-spacing: -1px;
+    }
+
+    .search-input-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .search-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F7F7F7;
+            border-radius: 50px;
+            border: 1px solid #DDDDDD;
+            width: fit-content;
+            margin: 24px 0 56px 0;
+            overflow: hidden;
+
+            input {
+                border: none;
+                outline: none;
+                padding: 24px 0 24px 32px;
+                font-size: 17px;
+                font-weight: 600;
+                line-height: normal;
+                color: #222222;
+                background-color: transparent;
+                min-width: 342px;
+                box-sizing: border-box;
+
+                &::placeholder {
+                    color: #222222;
+                }
+            }
+
+            button {
+                border: none;
+                border-radius: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                max-width: 48px;
+                max-height: 48px;
+                padding: 16px;
+                margin: 0 8px 0 0;
+                background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+                
+                svg {
+                    stroke: #fff;
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./header.scss";
 import { NavLink } from "react-router-dom";
 import Mainlogo from "../../assets/svg/Headerlogo";
@@ -14,6 +15,7 @@ const Header = () => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isEarthModalOpen, setIsEarthModalOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const location = useLocation();
 
   const openSearchModal = () => {
     setIsSearchModalOpen(true);
@@ -57,59 +59,69 @@ const Header = () => {
     };
   }, [isSearchModalOpen, isEarthModalOpen]);
 
+  const isHelpPage = location.pathname === "/help";
+
   return (
     <>
-      <header>
-        <div className="container-header">
-          <div className="header-content-alignment-main">
-            <div className="header-logo-main">
-              <NavLink to={"/"}>
-                <Mainlogo />
-              </NavLink>
-            </div>
-            <div className="header-center-links-main">
-              <NavLink to={"/"}>Stays</NavLink>
-              <NavLink to={"/second"}>Experiences</NavLink>
-            </div>
-            <div className="header-last-content-main">
-              <NavLink to={"/"}>Airbnb your home</NavLink>
-              <NavLink
-                to={"#"}
-                onClick={isEarthModalOpen ? closeEarthModal : openEarthModal}
-                className={isActive ? "earth-icon-active" : ""}
-              >
-                <EarthIcon />
-              </NavLink>
+      {!isHelpPage && (
+        <header>
+          <div className="container-header">
+            <div className="header-content-alignment-main">
+              <div className="header-logo-main">
+                <NavLink to={"/"}>
+                  <Mainlogo />
+                </NavLink>
+              </div>
+              <div className="header-center-links-main">
+                <NavLink to={"/"}>Stays</NavLink>
+                <NavLink to={"/second"}>Experiences</NavLink>
+              </div>
+              <div className="header-last-content-main">
+                <NavLink to={"/"}>Airbnb your home</NavLink>
+                <NavLink
+                  to={"#"}
+                  onClick={isEarthModalOpen ? closeEarthModal : openEarthModal}
+                  className={isActive ? "earth-icon-active" : ""}
+                >
+                  <EarthIcon />
+                </NavLink>
 
-              <div className="header-profile-div-main">
-                <Hemburger />
-                <img src={Profileicon} alt="Profileicon" />
+                <div className="header-profile-div-main">
+                  <Hemburger />
+                  <img src={Profileicon} alt="Profileicon" />
+                </div>
+              </div>
+            </div>
+            <div className="header-mobile-search-div" onClick={openSearchModal}>
+              <div className="searchicon-div">
+                <Searchicon />
+              </div>
+              <div className="where-to-div-main">
+                <p>Where to?</p>
+                <div className="where-to-span-main">
+                  <span>Anywhere</span>
+                  <span>•</span>
+                  <span>Any week</span>
+                  <span>•</span>
+                  <span>Add guests</span>
+                </div>
               </div>
             </div>
           </div>
-          <div className="header-mobile-search-div" onClick={openSearchModal}>
-            <div className="searchicon-div">
-              <Searchicon />
-            </div>
-            <div className="where-to-div-main">
-              <p>Where to?</p>
-              <div className="where-to-span-main">
-                <span>Anywhere</span>
-                <span>•</span>
-                <span>Any week</span>
-                <span>•</span>
-                <span>Add guests</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <Headerwheremodel
-        isModalOpen={isSearchModalOpen}
-        closeModal={closeSearchModal}
-      />
-      <Earthmodel isModalOpen={isEarthModalOpen} closeModal={closeEarthModal} />
-      <Typeslider />
+        </header>
+      )}
+      {!isHelpPage && (
+        <Headerwheremodel
+          isModalOpen={isSearchModalOpen}
+          closeModal={closeSearchModal}
+        />
+      )}
+      {!isHelpPage && (
+        <Earthmodel isModalOpen={isEarthModalOpen} closeModal={closeEarthModal} />
+      )}
+      {!isHelpPage && (
+        <Typeslider />
+      )}
     </>
   );
 };
