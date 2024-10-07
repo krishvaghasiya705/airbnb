@@ -1,0 +1,116 @@
+.share-model-main-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    background: rgba(34, 34, 34, 0.6);
+    cursor: pointer;
+}
+
+.share-model-main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    z-index: 12;
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #fff;
+    min-width: 568px;
+    box-sizing: border-box;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform-origin: center;
+
+    &.open {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    .share-model-close {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 8px 0 16px 0;
+
+        svg {
+            cursor: pointer;
+        }
+    }
+
+    .share-model-title {
+
+        h1 {
+            font-size: 24px;
+            color: #222222;
+            font-weight: 600;
+            line-height: 30px;
+            font-family: "Montserrat", sans-serif;
+        }
+    }
+
+    .share-model-card-details {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 24px 0;
+
+        .shared-image {
+            margin: 0 16px 0 0;
+
+            img {
+                border-radius: 8px;
+                width: 64px;
+                height: 64px;
+                object-fit: cover;
+            }
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            color: #222222;
+        }
+    }
+
+    .share-model-body {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+
+        @media (max-width:576px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .share-model-via-box {
+            border-radius: 12px;
+            border: 1px solid #DDDDDD;
+            width: 100%;
+            background: #FFFFFF;
+            height: 48px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            cursor: pointer;
+
+            svg {
+                margin: 0 16px;
+                border-radius: 4px;
+            }
+
+            p {
+                font-size: 16px;
+                font-weight: 600;
+                color: #222222;
+                line-height: 20px;
+            }
+        }
+    }
+}
