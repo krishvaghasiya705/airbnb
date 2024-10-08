@@ -4,7 +4,8 @@
     .help-container {
         max-width: 1176px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 56px;
+        box-sizing: border-box;
     }
 
     h1 {
@@ -60,9 +61,318 @@
                 padding: 16px;
                 margin: 0 8px 0 0;
                 background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
-                
+
                 svg {
                     stroke: #fff;
+                }
+            }
+        }
+    }
+
+    .help-were-div-main {
+
+        .help-were-slide-main {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            border-bottom: 1px solid #DDDDDD;
+            margin: 0 0 56px 0;
+
+            .help-were-slide-box {
+
+                p {
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: normal;
+                    color: #6A6A6A;
+                    padding: 10px 10px 10px 0;
+                    margin: 6px 6px 6px 0;
+                    position: relative;
+
+                    &.active {
+                        color: #222222;
+
+                        &::after {
+                            position: absolute;
+                            bottom: -6px;
+                            left: 0;
+                            content: "";
+                            height: 2px;
+                            width: calc(100% - 10px);
+                            background-color: #222222;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .help-were-ticket-div-main {
+            border: 1px solid #DDDDDD;
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 64px 0;
+
+            h2 {
+                font-size: 26px;
+                font-weight: 600;
+                line-height: 30px;
+                margin: 0 0 8px 0;
+                color: #222222;
+            }
+
+            p {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 20px;
+                color: #222222;
+            }
+
+            .log-in-button {
+                margin: 0 0 0 24px;
+
+
+                button {
+                    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+                    border: none;
+                    border-radius: 8px;
+                    padding: 14px 24px;
+                    min-width: 400px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 20px;
+                    color: #fff;
+                }
+            }
+        }
+
+        .help-guide-div-main {
+
+            .help-guide-title-box {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 0 32px 0;
+
+                h3 {
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 30px;
+                    color: #222222;
+                }
+
+                button {
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 20px;
+                    color: #222222;
+                }
+            }
+        }
+
+        .help-guid-ard-grd-main {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 0 0 64px 0;
+
+            @media (max-width: 1200px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media (max-width: 1024px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (max-width: 576px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .help-guide-card {
+
+                .help-gide-card-image {
+                    border-radius: 12px;
+
+                    img {
+                        border-radius: 12px;
+                        min-height: 254px;
+                    }
+                }
+
+                p {
+                    margin: 16px 0 0 0;
+                    font-size: 17px;
+                    font-weight: 600;
+                    line-height: 24px;
+                    color: #222222;
+                }
+            }
+        }
+
+        .help-guide-top-article-div-main {
+
+            h4 {
+                color: #222222;
+                font-size: 26px;
+                font-weight: 600;
+                line-height: 30px;
+                margin: 0 0 32px 0;
+            }
+
+            .help-guide-article-grd-main {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+                margin: 0 0 64px 0;
+
+                .help-guide-article-box {
+                    height: 132px;
+                    border-bottom: 1px solid #DDDDDD;
+
+                    h5 {
+                        margin: 0 0 4px 0;
+                        font-size: 17px;
+                        font-weight: 600;
+                        line-height: 24px;
+                        color: #222222;
+                        text-decoration-line: underline;
+                    }
+
+                    p {
+                        font-size: 15px;
+                        font-weight: 500;
+                        line-height: 20px;
+                        color: #6A6A6A;
+                        display: -webkit-box;
+                        line-clamp: 2;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+
+    .help-explore-section-main {
+        background-color: #000;
+        padding: 56px 0;
+
+        .help-explore-title {
+            margin: 0 0 32px 0;
+
+            h5 {
+                font-size: 32px;
+                font-weight: 600;
+                line-height: 36px;
+                color: #fff;
+            }
+        }
+
+        .help-explore-main-flx {
+            // display: flex;
+            // justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            align-items: center;
+            gap: 32px;
+
+            .help-explore-left-grd {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                width: 100%;
+
+                .help-explore-left-box-one {
+                    border-radius: 12px;
+                    background-color: #222222;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    min-height: 291px;
+
+                    .help-exlore-left-box-one-image {
+
+                        img {
+                            max-height: 220px;
+                        }
+                    }
+
+                    .help-exlore-left-box-one-content {
+                        padding: 16px 16px 24px 16px;
+
+                        p {
+                            font-size: 16px;
+                            font-weight: 600;
+                            line-height: 20px;
+                            color: #fff;
+                        }
+
+                        span {
+                            font-size: 14px;
+                            font-weight: 500;
+                            line-height: 18px;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            .help-explore-right-flx {
+
+                h6 {
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 30px;
+                    color: #fff;
+                    margin: 0 0 8px 0;
+                }
+
+                p {
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    color: #fff;
+                }
+
+                button {
+                    max-width: 300px;
+                    margin: 24px 0;
+                    width: 100%;
+                    background-color: #fff;
+                    border: none;
+                    outline: none;
+                    color: #222222;
+                    padding: 13px 23px;
+                    border-radius: 8px;
+                    box-sizing: border-box;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 24px;
+                    cursor: pointer;
+                }
+
+                span {
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    display: block;
+
+                    a {
+                        color: #fff;
+                        text-decoration-line: underline;
+                    }
                 }
             }
         }
