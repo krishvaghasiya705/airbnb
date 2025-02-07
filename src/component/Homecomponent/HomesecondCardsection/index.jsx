@@ -3,6 +3,8 @@ import "./homesecondcard.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import Shareicon from "../../../assets/svg/Shareicon";
 import Nextslideicon from "../../../assets/svg/Nextslideicon";
@@ -30,6 +32,7 @@ function SamplePrevArrow(props) {
 function Homesecondcardsection() {
   const [isShareModelOpen, setIsShareModelOpen] = useState(false);
   const [shareData, setShareData] = useState({ title: "", image: "" });
+  const [imageLoading, setImageLoading] = useState(true);
 
   const settings = {
     dots: true,
@@ -44,6 +47,10 @@ function Homesecondcardsection() {
   const handleShareClick = (title, image) => {
     setShareData({ title, image });
     setIsShareModelOpen(true);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
   };
 
   useEffect(() => {
@@ -71,13 +78,27 @@ function Homesecondcardsection() {
                     <Slider {...settings}>
                       {card.images.map((image, imgIndex) => (
                         <div key={imgIndex}>
-                          <img src={image} alt={`image-${imgIndex}`} />
+                          {imageLoading && <Skeleton height={200} />}
+                          <img
+                            src={image}
+                            alt={`image-${imgIndex}`}
+                            onLoad={handleImageLoad}
+                            style={{ display: imageLoading ? "none" : "block" }}
+                          />
                         </div>
                       ))}
                     </Slider>
                   ) : (
                     card.images.map((image, imgIndex) => (
-                      <img src={image} alt={`image-${imgIndex}`} key={imgIndex} />
+                      <div key={imgIndex}>
+                        {imageLoading && <Skeleton height={200} />}
+                        <img
+                          src={image}
+                          alt={`image-${imgIndex}`}
+                          onLoad={handleImageLoad}
+                          style={{ display: imageLoading ? "none" : "block" }}
+                        />
+                      </div>
                     ))
                   )}
                   <div

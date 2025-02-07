@@ -5,18 +5,20 @@ import Header from "./common/header";
 import Footer from "./common/footer";
 import Scrolltotop from "./component/Scrollredirection";
 import Helppage from "./pages/help";
-// import ModelPage from "./pages/modelpage";
+import Gridpage from "./pages/gridpage";
+import ModelPage from "./pages/modelpage";
 
 const App = () => {
   // document.designMode="on"
   return (
-    <div>
+    <div>``
       <Scrolltotop />
       <Header />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/help" element={<Helppage />} />
+          {/* <Route path="/gridpage" element={<Gridpage />} /> */}
           {/* <Route path="/modelpage" element={<ModelPage />} /> */}
         </Routes>
       </main>

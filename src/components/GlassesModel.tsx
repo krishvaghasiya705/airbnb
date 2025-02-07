@@ -1,51 +1,63 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const GlassesModel: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const logoGroupRef = useRef<THREE.Group | null>(null);
 
   useEffect(() => {
     if (!mountRef.current) return;
 
     // Scene setup
     const scene = new THREE.Scene();
+    sceneRef.current = scene;
     scene.background = new THREE.Color(0xf0f0f0);
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    cameraRef.current = camera;
     const renderer = new THREE.WebGLRenderer({ antialias: true });
+    rendererRef.current = renderer;
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     mountRef.current.appendChild(renderer.domElement);
 
-    // Create a simple table geometry
-    const tableGeometry = new THREE.BoxGeometry(2, 0.1, 1);
-    const tableMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
-    const table = new THREE.Mesh(tableGeometry, tableMaterial);
-    table.position.set(0, -0.5, 0);
-    table.castShadow = true;
-    table.receiveShadow = true;
-    scene.add(table);
+    // Create Toyota logo using basic shapes
+    const logoGroup = new THREE.Group();
+    logoGroupRef.current = logoGroup;
 
-    // Create a simple glasses geometry
-    const frameGeometry = new THREE.TorusGeometry(0.2, 0.02, 16, 100);
-    const frameMaterial = new THREE.MeshStandardMaterial({ color: 0x000000 });
-    const leftLens = new THREE.Mesh(frameGeometry, frameMaterial);
-    const rightLens = new THREE.Mesh(frameGeometry, frameMaterial);
-    leftLens.position.set(-0.2, 0.5, 0);
-    rightLens.position.set(0.2, 0.5, 0);
-    const bridge = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.01, 0.01, 0.4, 32),
-      frameMaterial
+    // Outer ellipse
+    const outerEllipse = new THREE.Mesh(
+      new THREE.TorusGeometry(1, 0.1, 16, 100),
+      new THREE.MeshPhongMaterial({ color: 0xFF0000 })
     );
-    bridge.rotation.z = Math.PI / 2;
-    bridge.position.set(0, 0.5, 0);
-    const glasses = new THREE.Group();
-    glasses.add(leftLens, rightLens, bridge);
-    glasses.castShadow = true;
-    scene.add(glasses);
+    logoGroup.add(outerEllipse);
+
+    // Inner ellipses
+    const innerEllipse1 = new THREE.Mesh(
+      new THREE.TorusGeometry(0.7, 0.08, 16, 100),
+      new THREE.MeshPhongMaterial({ color: 0xFF0000 })
+    );
+    innerEllipse1.rotation.x = Math.PI / 4;
+    logoGroup.add(innerEllipse1);
+
+    const innerEllipse2 = new THREE.Mesh(
+      new THREE.TorusGeometry(0.7, 0.08, 16, 100),
+      new THREE.MeshPhongMaterial({ color: 0xFF0000 })
+    );
+    innerEllipse2.rotation.x = -Math.PI / 4;
+    logoGroup.add(innerEllipse2);
+
+    logoGroup.scale.set(0.5, 0.5, 0.5);
+    scene.add(logoGroup);
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -62,66 +74,91 @@ const GlassesModel: React.FC = () => {
     pointLight.position.set(-2, 3, 2);
     scene.add(pointLight);
 
-    camera.position.set(2, 2, 2);
+    camera.position.set(0, 0, 3);
 
     // Add OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.enableZoom = true;
-    controls.minDistance = 2;
+    controls.minDistance = 1;
     controls.maxDistance = 10;
 
-    // Floor
-    const floorGeometry = new THREE.PlaneGeometry(10, 10);
-    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0xcccccc });
-    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-    floor.rotation.x = -Math.PI / 2;
-    floor.receiveShadow = true;
-    scene.add(floor);
-
     // Animation
-    let scrollY = window.scrollY;
     const animate = () => {
       requestAnimationFrame(animate);
-
-      // Scroll animation
-      const newScrollY = window.scrollY;
-      const scrollDelta = newScrollY - scrollY;
-      scrollY = newScrollY;
-
-      // Rotate the glasses based on scroll
-      glasses.rotateY(scrollDelta * 0.002);
-
       controls.update();
       renderer.render(scene, camera);
     };
 
     animate();
 
+    // Scroll-based animations
+    gsap.to(logoGroup.rotation, {
+      y: Math.PI * 2,
+      scrollTrigger: {
+        trigger: mountRef.current,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1,
+      },
+    });
+
+    gsap.to(camera.position, {
+      z: 1.5,
+      scrollTrigger: {
+        trigger: mountRef.current,
+        start: 'top top',
+        end: '50% 50%',
+        scrub: 1,
+      },
+    });
+
+    gsap.to(camera.position, {
+      z: 5,
+      scrollTrigger: {
+        trigger: mountRef.current,
+        start: '50% 50%',
+        end: 'bottom bottom',
+        scrub: 1,
+      },
+    });
+
+    gsap.to(logoGroup.position, {
+      x: 1,
+      scrollTrigger: {
+        trigger: mountRef.current,
+        start: '25% 25%',
+        end: '75% 75%',
+        scrub: 1,
+      },
+    });
+
     // Handle window resize
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      if (cameraRef.current && rendererRef.current) {
+        cameraRef.current.aspect = window.innerWidth / window.innerHeight;
+        cameraRef.current.updateProjectionMatrix();
+        rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+      }
     };
 
     window.addEventListener('resize', handleResize);
 
     // Cleanup
     return () => {
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountRef.current && rendererRef.current) {
+        mountRef.current.removeChild(rendererRef.current.domElement);
       }
       window.removeEventListener('resize', handleResize);
       controls.dispose();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      <div ref={mountRef} style={{ width: '100%', height: '100vh' }} />
-      <div style={{position: "absolute", top: "0", left: "0", width: "100%", height: "100%", backgroundColor: "rgba(0, 0, 0, 0.5)"}}></div>
+    <div style={{ width: '100%', height: '300vh', position: 'relative' }}>
+      <div ref={mountRef} style={{ width: '100%', height: '100vh', position: 'sticky', top: 0 }} />
     </div>
   );
 };
